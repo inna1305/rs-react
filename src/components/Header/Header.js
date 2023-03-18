@@ -12,18 +12,18 @@ const Navigation = () => {
         React.createElement("li", null,
             React.createElement(Title, null)),
         React.createElement("li", { className: '' },
-            React.createElement(Link, { to: "/" }, "Home3")),
+            React.createElement(Link, { to: "/" }, "Home")),
         React.createElement("li", null,
             React.createElement(Link, { to: "/about" }, "About Us"))));
 };
 class Title extends React.Component {
     getPageTitle() {
         const path = window.location.pathname;
-        const pageName = path === '/' ? 'Home' : path.substring(1);
+        const pageName = path === '/' ? 'home' : path.substring(1);
         return pageName;
     }
     render() {
-        return React.createElement("h1", null, this.getPageTitle());
+        return React.createElement("h1", { className: 'header-title' }, this.getPageTitle());
     }
 }
 export default Header;

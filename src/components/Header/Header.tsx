@@ -20,7 +20,7 @@ const Navigation = () => {
         <Title />
       </li>
       <li className=''>
-        <Link to="/">Home3</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
         <Link to="/about">About Us</Link>
@@ -32,11 +32,10 @@ const Navigation = () => {
 class Title extends React.Component {
   getPageTitle() {
     const path = window.location.pathname;
-    const pageName = path === '/' ? 'Home' : path.substring(1);
-    return pageName;
+    return path === '/' ? 'home' : path.substring(1);
   }
   render() {
-    return <h1>{this.getPageTitle()}</h1>;
+    return <h1 className='header-title'>{this.getPageTitle()}</h1>;
   }
 }
 
