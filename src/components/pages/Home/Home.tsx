@@ -1,21 +1,19 @@
-import React from 'react';
-import { Routes, Route, Outlet } from 'react-router-dom';
-import { AboutUs, Home } from '../../../App';
-import NotFound from '../NotFound';
+import React from 'react'
+import Header from '../../Header/Header';
 
-  class App extends React.Component {
-
-    render() {
-      return (<div>
-          <Outlet />
-          <Routes>
-              <Route path='/' index element={<Home />} />
-              <Route path="about" element={<AboutUs />} />
-              <Route path="*" element={<NotFound />} />
-          </Routes>
+export const Home = () => {
+    return (
+        <div>
+            <Header />
+            <h2>Home</h2>
         </div>
-      );
-    };
+    );
+}
 
-  }
-    export default App;
+const SearchBar = () => {
+  return (
+    <div>
+
+    </div>
+  );
+}
