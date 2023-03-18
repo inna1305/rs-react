@@ -4,17 +4,6 @@ import './header.css';
 
 const Header = () => {
   return (
-    <div>
-      <div>
-        <Navigation />
-      </div>
-      <hr />
-    </div>
-  );
-}
-
-const Navigation = () => {
-  return (
     <ul className='navigation'>
       <li>
         <Title />

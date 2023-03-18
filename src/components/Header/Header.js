@@ -2,12 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 const Header = () => {
-    return (React.createElement("div", null,
-        React.createElement("div", null,
-            React.createElement(Navigation, null)),
-        React.createElement("hr", null)));
-};
-const Navigation = () => {
     return (React.createElement("ul", { className: 'navigation' },
         React.createElement("li", null,
             React.createElement(Title, null)),
@@ -19,8 +13,7 @@ const Navigation = () => {
 class Title extends React.Component {
     getPageTitle() {
         const path = window.location.pathname;
-        const pageName = path === '/' ? 'home' : path.substring(1);
-        return pageName;
+        return path === '/' ? 'home' : path.substring(1);
     }
     render() {
         return React.createElement("h1", { className: 'header-title' }, this.getPageTitle());
