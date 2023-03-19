@@ -1,19 +1,41 @@
-import React from 'react'
+import React, { ChangeEvent, ReactElement } from 'react';
 import Header from '../../Header/Header';
-
-export const Home = () => {
+import './home.css';
+export const Home = (): ReactElement => {
     return (
         <div>
             <Header />
-            <h2>Home</h2>
+            <SearchBar />
         </div>
     );
 }
 
-const SearchBar = () => {
-  return (
-    <div>
+class SearchBar extends React.Component {
+  state = {
+    value: '',
+  }
 
-    </div>
+ render() {
+   return (
+    <form className='home-searchbar' onSubmit={this.handleSubmit}>
+      <input placeholder='enter something...' type='text' value={this.state.value} onChange={this.handleChange} />
+      <button type='submit'>Search</button>
+    </form>
   );
+ }
+
+  handleSubmit = () => {
+    if (!localStorage.getItem('searchWord')) {
+      localStorage.setItem('searchWord', this.state.value);
+    }
+    if (this.state.value.length > 0) {
+      localStorage.setItem('searchWord', this.state.value);
+      this.setState({ state : '' });
+    }
+ }
+
+  handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    this.state.value =  event.target.value;
+    this.setState({ state : this.state.value });
+  };
 }
