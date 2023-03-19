@@ -3,6 +3,7 @@
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
     "jsx": "react",
+    "noEmit": true,
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
