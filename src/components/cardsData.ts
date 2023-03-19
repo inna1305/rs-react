@@ -7,7 +7,7 @@ export const persons: Card[] = [
     placeOfBirth: Place.Space,
     dimensions: [Dimension.DimensionC500A, Dimension.Dimension1984, Dimension.DimensionC137],
     type: 'human',
-    photo: './public/rick.webp'
+    photo: './public/rick.webp',
   },
   {
     name: 'Morty',
@@ -15,7 +15,7 @@ export const persons: Card[] = [
     placeOfBirth: Place.Earth,
     dimensions: [Dimension.DimensionC500A, Dimension.Dimension1984, Dimension.DimensionC137],
     type: 'human',
-    photo: './public/morty.webp'
+    photo: './public/morty.webp',
   },
   {
     name: 'Mr.Poopybutthole',
@@ -23,7 +23,7 @@ export const persons: Card[] = [
     placeOfBirth: Place.Space,
     dimensions: [Dimension.DimensionC500A],
     type: 'alien',
-    photo: './public/poopybutthole.webp'
+    photo: './public/poopybutthole.webp',
   },
   {
     name: 'Talking Cat',
@@ -31,7 +31,7 @@ export const persons: Card[] = [
     placeOfBirth: Place.Miniverse,
     dimensions: [Dimension.DimensionC500A],
     type: 'alien',
-    photo: './public/cat.webp'
+    photo: './public/cat.webp',
   },
   {
     name: 'Birdperson',
@@ -39,7 +39,7 @@ export const persons: Card[] = [
     placeOfBirth: Place.Miniverse,
     dimensions: [Dimension.DimensionC500A, Dimension.Dimension1984, Dimension.DimensionC137],
     type: 'alien',
-    photo: './public/birdperson.webp'
+    photo: './public/birdperson.webp',
   },
   {
     name: 'Pencilvester',
@@ -47,7 +47,7 @@ export const persons: Card[] = [
     placeOfBirth: Place.Space,
     dimensions: [Dimension.DimensionC500A, Dimension.DimensionC137],
     type: 'alien',
-    photo: './public/pencil.webp'
+    photo: './public/pencil.webp',
   },
   {
     name: 'Mrs.Pancakes',
@@ -55,7 +55,7 @@ export const persons: Card[] = [
     placeOfBirth: Place.Earth,
     dimensions: [Dimension.DimensionC500A],
     type: 'human',
-    photo: './public/pancake.webp'
+    photo: './public/pancake.webp',
   },
   {
     name: 'Mr.Meeseeks',
@@ -63,7 +63,7 @@ export const persons: Card[] = [
     placeOfBirth: Place.Gromflom,
     dimensions: [Dimension.DimensionC500A],
     type: 'alien',
-    photo: './public/meeseks.webp'
+    photo: './public/meeseks.webp',
   },
   {
     name: 'Sleepy Gary',
@@ -71,6 +71,6 @@ export const persons: Card[] = [
     placeOfBirth: Place.Space,
     dimensions: [Dimension.DimensionC137],
     type: 'alien',
-    photo: './public/sleepyGary.webp'
+    photo: './public/sleepyGary.webp',
   },
-]
+];

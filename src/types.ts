@@ -13,7 +13,7 @@ export enum Place {
   Gromflom = 'Gromflom',
   Miniverse = 'Miniverse',
   Space = 'Space',
-  Unknown = 'Unknown'
+  Unknown = 'Unknown',
 }
 
 export enum Dimension {
