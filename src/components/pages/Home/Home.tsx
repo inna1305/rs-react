@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactElement } from 'react';
+import React, { ChangeEvent, FormEvent, ReactElement } from 'react';
 import Header from '../../Header/Header';
 import './home.css';
 export const Home = (): ReactElement => {
@@ -20,11 +20,11 @@ class SearchBar extends React.Component {
     <form className='home-searchbar' onSubmit={this.handleSubmit}>
       <input placeholder='enter something...' type='text' value={this.state.value} onChange={this.handleChange} />
       <button type='submit'>Search</button>
+      <this.SearchWord />
     </form>
   );
  }
-
-  handleSubmit = () => {
+  componentWillUnmount() {
     if (!localStorage.getItem('searchWord')) {
       localStorage.setItem('searchWord', this.state.value);
     }
@@ -32,10 +32,30 @@ class SearchBar extends React.Component {
       localStorage.setItem('searchWord', this.state.value);
       this.setState({ state : '' });
     }
+  }
+
+  handleSubmit = (event: FormEvent) => {
+    // if (!localStorage.getItem('searchWord')) {
+    //   localStorage.setItem('searchWord', this.state.value);
+    // }
+    // if (this.state.value.length > 0) {
+    //   localStorage.setItem('searchWord', this.state.value);
+    //   this.setState({ state : '' });
+    // }
+    event.preventDefault();
+    this.setState({ state : this.state.value });
  }
 
   handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     this.state.value =  event.target.value;
     this.setState({ state : this.state.value });
   };
+
+  SearchWord = () => {
+    return (
+      <div className='search-word'>
+        Value: {localStorage.getItem('searchWord')}
+      </div>
+    )
+  }
 }
