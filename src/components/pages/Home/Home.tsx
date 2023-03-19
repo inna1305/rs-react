@@ -35,13 +35,6 @@ class SearchBar extends React.Component {
   }
 
   handleSubmit = (event: FormEvent) => {
-    // if (!localStorage.getItem('searchWord')) {
-    //   localStorage.setItem('searchWord', this.state.value);
-    // }
-    // if (this.state.value.length > 0) {
-    //   localStorage.setItem('searchWord', this.state.value);
-    //   this.setState({ state : '' });
-    // }
     event.preventDefault();
     this.setState({ state : this.state.value });
  }
