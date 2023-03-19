@@ -29,7 +29,7 @@ const GetDimensions = (person: Card) => {
   const listItems = dimensions.map(dimension => (
     <li key={dimension} className='list-item'>{dimension}</li>
   ));
-  return <p className='list-title'>Dimensions:<ul>{listItems}</ul></p>
+  return <div> <p className='list-title'>Dimensions:</p><ul>{listItems}</ul></div>
 }
 
 export default Cards;
