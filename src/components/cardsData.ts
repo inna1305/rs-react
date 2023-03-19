@@ -1,75 +1,76 @@
-import { Card } from '../types';
-const persons: Card[] = [
+import { Card, Dimension, Place } from '../types';
+
+export const persons: Card[] = [
   {
     name: 'Rick',
     birthday: new Date(1960, 12, 30),
-    placeOfBirth: Place.Earth,
-    dimersions: [ Dimension.DimensionC137, Dimension.DimensionC500A, Dimension.Dimension1984 ],
+    placeOfBirth: Place.Space,
+    dimensions: [Dimension.DimensionC500A, Dimension.Dimension1984, Dimension.DimensionC137],
     type: 'human',
-    photo: ''
+    photo: './public/rick.webp'
   },
   {
     name: 'Morty',
     birthday: new Date(2010, 7, 13),
     placeOfBirth: Place.Earth,
-    dimersions: [ Dimension.DimensionC137, Dimension.DimensionC500A, Dimension.Dimension1984 ],
+    dimensions: [Dimension.DimensionC500A, Dimension.Dimension1984, Dimension.DimensionC137],
     type: 'human',
-    photo: ''
+    photo: './public/morty.webp'
   },
   {
     name: 'Mr.Poopybutthole',
     birthday: new Date(1800, 10, 3),
     placeOfBirth: Place.Space,
-    dimersions: [ Dimension.Dimension1984 ],
+    dimensions: [Dimension.DimensionC500A],
     type: 'alien',
-    photo: ''
+    photo: './public/poopybutthole.webp'
   },
   {
     name: 'Talking Cat',
     birthday: new Date(1995, 5, 13),
     placeOfBirth: Place.Miniverse,
-    dimersions: [ ],
+    dimensions: [Dimension.DimensionC500A],
     type: 'alien',
-    photo: ''
+    photo: './public/cat.webp'
   },
   {
     name: 'Birdperson',
     birthday: new Date(1985, 2, 5),
     placeOfBirth: Place.Miniverse,
-    dimersions: [ Dimension.Dimension1984 ],
+    dimensions: [Dimension.DimensionC500A, Dimension.Dimension1984, Dimension.DimensionC137],
     type: 'alien',
-    photo: ''
+    photo: './public/birdperson.webp'
   },
   {
     name: 'Pencilvester',
     birthday: new Date(1000, 8, 18),
     placeOfBirth: Place.Space,
-    dimersions: [ Dimension.DimensionC500A ],
+    dimensions: [Dimension.DimensionC500A, Dimension.DimensionC137],
     type: 'alien',
-    photo: ''
+    photo: './public/pencil.webp'
   },
   {
     name: 'Mrs.Pancakes',
     birthday: new Date(1994, 1, 28),
     placeOfBirth: Place.Earth,
-    dimersions: [ Dimension.DimensionC137 ],
+    dimensions: [Dimension.DimensionC500A],
     type: 'human',
-    photo: ''
+    photo: './public/pancake.webp'
   },
   {
     name: 'Mr.Meeseeks',
     birthday: new Date(1001, 10, 10),
     placeOfBirth: Place.Gromflom,
-    dimersions: [ ],
+    dimensions: [Dimension.DimensionC500A],
     type: 'alien',
-    photo: ''
+    photo: './public/meeseks.webp'
   },
   {
     name: 'Sleepy Gary',
     birthday: new Date(1980, 3, 1),
     placeOfBirth: Place.Space,
-    dimersions: [ Dimension.Dimension1984 ],
+    dimensions: [Dimension.DimensionC137],
     type: 'alien',
-    photo: ''
+    photo: './public/sleepyGary.webp'
   },
 ]
