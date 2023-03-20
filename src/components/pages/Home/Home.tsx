@@ -6,6 +6,7 @@ export const Home = (): ReactElement => {
     return (
         <div>
             <Header />
+            <div className='warn'>please don't check my work until morning!</div>
             <SearchBar />
             <Cards />
         </div>
