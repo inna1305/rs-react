@@ -9,5 +9,5 @@ const AboutUs = () => {
       <p>Information</p>
     </div>
   );
-}
+};
 export default AboutUs;

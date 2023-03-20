@@ -4,19 +4,19 @@ import './header.css';
 
 const Header = () => {
   return (
-    <ul className='navigation'>
+    <ul className="navigation">
       <li>
         <Title />
       </li>
-      <li className=''>
+      <li className="">
         <Link to="/">Home</Link>
       </li>
       <li>
         <Link to="/about">About Us</Link>
       </li>
     </ul>
-  )
-}
+  );
+};
 
 class Title extends React.Component {
   getPageTitle() {
@@ -24,7 +24,7 @@ class Title extends React.Component {
     return path === '/' ? 'home' : path.substring(1);
   }
   render() {
-    return <h1 className='header-title'>{this.getPageTitle()}</h1>;
+    return <h1 className="header-title">{this.getPageTitle()}</h1>;
   }
 }
 
