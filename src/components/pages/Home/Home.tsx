@@ -6,10 +6,6 @@ export const Home = (): ReactElement => {
   return (
     <div>
       <Header />
-      <div className="warn">
-        sorry, the tests are still in progress. if it doesn&apos;t bother you, check the work later
-        ♥
-      </div>
       <SearchBar />
       <Cards />
     </div>
