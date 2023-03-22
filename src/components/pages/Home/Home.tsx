@@ -14,7 +14,7 @@ export const Home = (): ReactElement => {
 
 class SearchBar extends React.Component {
   state = {
-    value: '',
+    value: localStorage.getItem('searchWord') || '',
   };
 
   render() {
@@ -27,7 +27,6 @@ class SearchBar extends React.Component {
           onChange={this.handleChange}
         />
         <button type="submit">Search</button>
-        <this.SearchWord />
       </form>
     );
   }
@@ -49,9 +48,5 @@ class SearchBar extends React.Component {
   handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     this.setState({ value: event.target.value });
     this.setState({ state: this.state.value });
-  };
-
-  SearchWord = () => {
-    return <div className="search-word">Value: {localStorage.getItem('searchWord')}</div>;
   };
 }
