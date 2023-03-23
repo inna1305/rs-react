@@ -6,6 +6,7 @@ import CheckboxInput from './CheckboxInput';
 import RadioInput from './RadioInput';
 import FileInput from './FileInput';
 import './form.css';
+import Header from '../../../Header/Header';
 
 class FormCreateCard extends React.Component {
   state = {
@@ -14,18 +15,21 @@ class FormCreateCard extends React.Component {
 
   render() {
     return (
-      <form className="home-create-form" onSubmit={this.handleSubmit}>
-        <h3 className="home-create-form__title">Add your baby pet</h3>
-        <NameInput />
-        <DateInput />
-        <SelectInput />
-        <CheckboxInput />
-        <RadioInput />
-        <FileInput />
-        <button type="submit" className="form-button">
-          Add
-        </button>
-      </form>
+      <>
+        <Header />
+        <form className="home-create-form" onSubmit={this.handleSubmit}>
+          <h3 className="home-create-form__title">Add your baby pet</h3>
+          <NameInput />
+          <DateInput />
+          <SelectInput />
+          <CheckboxInput />
+          <RadioInput />
+          <FileInput />
+          <button type="submit" className="form-button">
+            Add
+          </button>
+        </form>
+      </>
     );
   }
   componentWillUnmount() {

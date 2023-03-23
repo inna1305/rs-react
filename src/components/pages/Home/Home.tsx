@@ -1,14 +1,12 @@
 import React, { ChangeEvent, FormEvent, ReactElement } from 'react';
 import Header from '../../Header/Header';
 import Cards from './Cards/Cards';
-import FormCreateCard from './Form/Form';
 import './home.css';
 export const Home = (): ReactElement => {
   return (
     <div>
       <Header />
       <SearchBar />
-      <FormCreateCard />
       <Cards />
     </div>
   );
