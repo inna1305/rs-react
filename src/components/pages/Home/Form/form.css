@@ -52,6 +52,7 @@
     background: none;
     border: 2px solid #9a9a9a;
     color: #9a9a9a;
+    padding: 0 15px;
 }
 
 .input-date {
@@ -132,4 +133,9 @@ fieldset {
     background-color: #848aff;
     transition: 0.2s ease;
     scale: 1.1;
+}
+
+.form-button:active {
+    background-color: #373fe0;
+    transition: 0.2s ease;
 }

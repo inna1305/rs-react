@@ -32,8 +32,7 @@ const GetFeatures = (person: Card) => {
   ));
   return (
     <div>
-      <p className="list-title">Features:</p>
-      <ul>{listItems}</ul>
+      <ul className="list-container">{listItems}</ul>
     </div>
   );
 };

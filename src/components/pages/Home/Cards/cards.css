@@ -1,6 +1,6 @@
 .card-container {
     width: 300px;
-    height: 400px;
+    height: 350px;
     border-radius: 8px;
     border: 2px solid #9a9a9a;
     background-color: #4d4d4d;
@@ -45,17 +45,28 @@
     border-radius: 8px;
     border: 3px solid #9a9a9a;
     padding: 0 5px;
+    margin: 10px 0;
     align-self: center;
+    width: 95%;
 }
 
 .list-item {
     font-size: 13px;
     font-weight: lighter;
-    margin-left: 10px;
+    background-color: #7c7c7c;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 0 6px;
     list-style:none;
+    color: white;
 }
 
 .list-title {
     margin: 0;
     text-align: left;
+}
+.list-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0;
 }
