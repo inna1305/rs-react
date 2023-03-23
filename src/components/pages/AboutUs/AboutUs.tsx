@@ -6,7 +6,7 @@ const AboutUs = () => {
     <div>
       <Header />
       <h2>About Us</h2>
-      <p>Information</p>
+      <p>pet database, why not</p>
     </div>
   );
 };
