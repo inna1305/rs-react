@@ -1,18 +1,14 @@
 import React from 'react';
-import CheckboxInput from './CheckboxInput';
 
 const FileInput = () => {
   function validate() {
     //?
   }
   return (
-    <>
-      <input
-        type="radio"
-        // value={this.state.value}
-        // onChange={this.handleChange}
-      />
-    </>
+    <div className="photo-input">
+      <div className="home-create-form__label">photo</div>
+      <input type="file" name="photo" id="photo" />
+    </div>
   );
 };
 

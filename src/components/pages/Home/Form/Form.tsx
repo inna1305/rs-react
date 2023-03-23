@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, ReactElement } from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
 import NameInput from './NameInput';
 import DateInput from './DateInput';
 import SelectInput from './SelectInput';
@@ -22,7 +22,9 @@ class FormCreateCard extends React.Component {
         <CheckboxInput />
         <RadioInput />
         <FileInput />
-        <button type="submit">Add</button>
+        <button type="submit" className="form-button">
+          Add
+        </button>
       </form>
     );
   }
