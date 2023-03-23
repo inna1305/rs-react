@@ -1,34 +1,28 @@
 import React, { ChangeEvent, FormEvent, ReactElement } from 'react';
-import Header from '../../Header/Header';
-import Cards from './Cards/Cards';
-import FormCreateCard from './Form/Form';
-import './home.css';
-export const Home = (): ReactElement => {
-  return (
-    <div>
-      <Header />
-      <SearchBar />
-      <FormCreateCard />
-      <Cards />
-    </div>
-  );
-};
+import NameInput from './NameInput';
+import DateInput from './DateInput';
+import SelectInput from './SelectInput';
+import CheckboxInput from './CheckboxInput';
+import RadioInput from './RadioInput';
+import FileInput from './FileInput';
+import './form.css';
 
-class SearchBar extends React.Component {
+class FormCreateCard extends React.Component {
   state = {
     value: localStorage.getItem('searchWord') || '',
   };
 
   render() {
     return (
-      <form className="home-searchbar" onSubmit={this.handleSubmit}>
-        <input
-          placeholder="enter something..."
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Search</button>
+      <form className="home-create-form" onSubmit={this.handleSubmit}>
+        <h3 className="home-create-form__title">Add your baby pet</h3>
+        <NameInput />
+        <DateInput />
+        <SelectInput />
+        <CheckboxInput />
+        <RadioInput />
+        <FileInput />
+        <button type="submit">Add</button>
       </form>
     );
   }
@@ -52,3 +46,5 @@ class SearchBar extends React.Component {
     this.setState({ state: this.state.value });
   };
 }
+
+export default FormCreateCard;

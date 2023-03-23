@@ -1,25 +1,23 @@
 export interface Card {
   name: string;
   birthday: Date;
-  placeOfBirth: Place;
-  dimensions: Dimension[];
+  tactility: Tactility;
+  features: Features[];
   // dimensions: string;
   type: Type;
   photo: string;
 }
 
-export enum Place {
-  Earth = 'Earth',
-  Gromflom = 'Gromflom',
-  Miniverse = 'Miniverse',
-  Space = 'Space',
-  Unknown = 'Unknown',
+export enum Tactility {
+  LoveToHug = 'Love To Hug',
+  HardToGet = 'Hard To Get',
 }
 
-export enum Dimension {
-  DimensionC137 = 'DimensionC137',
-  DimensionC500A = 'DimensionC500A',
-  Dimension1984 = 'Dimension1984',
+export enum Features {
+  FluffyCheeks = 'FluffyCheeks',
+  FatBelly = 'FatBelly',
+  BoomingVoice = 'BoomingVoice',
+  LongMoustache = 'LongMoustache',
 }
 
-export type Type = 'human' | 'alien';
+export type Type = 'cat' | 'dog' | 'bird' | 'rodent';
