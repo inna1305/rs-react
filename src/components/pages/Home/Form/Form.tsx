@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent } from 'react';
+import React, { Component, FormEvent } from 'react';
 import NameInput from './NameInput';
 import DateInput from './DateInput';
 import SelectInput from './SelectInput';
@@ -8,18 +8,16 @@ import FileInput from './FileInput';
 import './form.css';
 import Header from '../../../Header/Header';
 
-class FormCreateCard extends React.Component {
-  state = {
-    value: localStorage.getItem('searchWord') || '',
-  };
+class FormCreateCard extends Component {
+  nameInputRef = React.createRef<NameInput>();
 
   render() {
     return (
       <>
         <Header />
         <form className="home-create-form" onSubmit={this.handleSubmit}>
-          <h3 className="home-create-form__title">Add your baby pet</h3>
-          <NameInput />
+          <h3 className="home-create-form__title">Add your pet</h3>
+          <NameInput ref={this.nameInputRef} />
           <DateInput />
           <SelectInput />
           <CheckboxInput />
@@ -32,24 +30,10 @@ class FormCreateCard extends React.Component {
       </>
     );
   }
-  componentWillUnmount() {
-    if (!localStorage.getItem('searchWord')) {
-      localStorage.setItem('searchWord', this.state.value);
-    }
-    if (this.state.value.length > 0) {
-      localStorage.setItem('searchWord', this.state.value);
-      this.setState({ state: '' });
-    }
-  }
 
   handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    this.setState({ state: this.state.value });
-  };
-
-  handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ value: event.target.value });
-    this.setState({ state: this.state.value });
+    console.log(this.nameInputRef.current?.inputRef.current?.value);
   };
 }
 
