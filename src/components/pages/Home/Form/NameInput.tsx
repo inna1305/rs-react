@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-interface NameInputProps {
+export interface InputProps {
   inputRef?: React.RefObject<HTMLInputElement>;
 }
-class NameInput extends Component<NameInputProps> {
+class NameInput extends Component<InputProps> {
   inputRef = React.createRef<HTMLInputElement>();
   validateName() {
     //с большой буквы если не mr/mrs

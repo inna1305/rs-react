@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { InputProps } from './NameInput';
 import { Tactility } from '../../../../types';
 
-const SelectInput = () => {
-  function validateSelect() {
+class SelectInput extends Component<InputProps> {
+  inputRef = React.createRef<HTMLSelectElement>();
+
+  validateSelect() {
     //?
   }
-  return (
-    <>
-      <div className="home-create-form__group select-elem">
-        <div className="home-create-form__label">Tactility</div>
-        <select className="home-create-form__select">
-          <option className="home-create-form__option">{Tactility.LoveToHug}</option>
-          <option className="home-create-form__option">{Tactility.HardToGet}</option>
-        </select>
-      </div>
-    </>
-  );
-};
+
+  render() {
+    return (
+      <>
+        <div className="home-create-form__group select-elem">
+          <div className="home-create-form__label">Tactility</div>
+          <select className="home-create-form__select" ref={this.inputRef}>
+            <option className="home-create-form__option">{Tactility.LoveToHug}</option>
+            <option className="home-create-form__option">{Tactility.HardToGet}</option>
+          </select>
+        </div>
+      </>
+    );
+  }
+}
 
 export default SelectInput;
