@@ -1,9 +1,9 @@
 import React, { Component, FormEvent } from 'react';
-import NameInput from './NameInput';
-import DateInput from './DateInput';
-import SelectInput from './SelectInput';
-import CheckboxInput from './CheckboxInput';
-import RadioInput from './RadioInput';
+import NameInput from './inputs/NameInput';
+import DateInput from './inputs/DateInput';
+import SelectInput from './inputs/SelectInput';
+import CheckboxInput from './inputs/CheckboxInput';
+import RadioInput from './inputs/RadioInput';
 import FileInput from './FileInput';
 import './form.css';
 import Header from '../../../Header/Header';

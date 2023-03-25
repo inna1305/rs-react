@@ -20,6 +20,7 @@ class DateInput extends Component<InputProps> {
             id="name"
             type="date"
             ref={this.inputRef}
+            required
           />
         </div>
       </>

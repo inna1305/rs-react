@@ -1,5 +1,5 @@
 import React, { Component, RefObject } from 'react';
-import { Features } from '../../../../types';
+import { Features } from '../../../../../types';
 import { InputProps } from './NameInput';
 
 class CheckboxInput extends Component<InputProps> {

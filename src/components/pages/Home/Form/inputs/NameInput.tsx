@@ -5,9 +5,6 @@ export interface InputProps {
 }
 class NameInput extends Component<InputProps> {
   inputRef = React.createRef<HTMLInputElement>();
-  validateName() {
-    //с большой буквы если не mr/mrs
-  }
 
   render() {
     return (
@@ -22,6 +19,7 @@ class NameInput extends Component<InputProps> {
             placeholder="name with a capital letter..."
             type="text"
             ref={this.inputRef}
+            required
           />
         </div>
       </>
