@@ -12,7 +12,7 @@ class FormCreateCard extends Component {
   nameInputRef = React.createRef<NameInput>();
   dateInputRef = React.createRef<DateInput>();
   selectInputRef = React.createRef<SelectInput>();
-  //checkboxInputRef = React.createRef<CheckboxInput>();
+  checkboxInputRef = React.createRef<CheckboxInput>();
   radioInputRef = React.createRef<RadioInput>();
 
   render() {
@@ -24,7 +24,7 @@ class FormCreateCard extends Component {
           <NameInput ref={this.nameInputRef} />
           <DateInput ref={this.dateInputRef} />
           <SelectInput ref={this.selectInputRef} />
-          {/*<CheckboxInput ref={this.checkboxInputRef.map} />*/}
+          <CheckboxInput ref={this.checkboxInputRef} />
           <RadioInput ref={this.radioInputRef} />
           <FileInput />
           <button type="submit" className="form-button">
@@ -40,7 +40,11 @@ class FormCreateCard extends Component {
     console.log(this.nameInputRef.current?.inputRef.current?.value);
     console.log(this.dateInputRef.current?.inputRef.current?.value);
     console.log(this.selectInputRef.current?.inputRef.current?.value);
-    //console.log(this.checkboxInputRef.current?.inputRef.current?.value);
+    const features = this.checkboxInputRef.current?.checkboxRefs.map((ref) => {
+      if (ref.current?.checked) {
+        console.log(ref.current?.value);
+      }
+    });
     const AnimalType = this.radioInputRef.current?.radioRefs.map((ref) => {
       if (ref.current?.checked) {
         console.log(ref.current?.value);
