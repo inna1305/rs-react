@@ -4,7 +4,7 @@ export interface Card {
   tactility: Tactility;
   features: Features[];
   // dimensions: string;
-  type: Type;
+  type: AnimalType;
   photo: string;
 }
 
@@ -20,4 +20,9 @@ export enum Features {
   LongMoustache = 'LongMoustache',
 }
 
-export type Type = 'cat' | 'dog' | 'bird' | 'rodent';
+export enum AnimalType {
+  'Cat' = 'Cat',
+  'Dog' = 'Dog',
+  'Bird' = 'Bird',
+  'Rodent' = 'Rodent',
+}

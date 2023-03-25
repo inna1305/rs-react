@@ -1,4 +1,4 @@
-import { Card, Features, Tactility } from '../types';
+import { AnimalType, Card, Features, Tactility } from '../types';
 
 export const persons: Card[] = [
   {
@@ -6,7 +6,7 @@ export const persons: Card[] = [
     birthday: new Date(2010, 7, 13),
     tactility: Tactility.LoveToHug,
     features: [Features.FatBelly],
-    type: 'rodent',
+    type: AnimalType.Cat,
     photo: './public/pumpkin.jpg',
   },
   {
@@ -14,7 +14,7 @@ export const persons: Card[] = [
     birthday: new Date(2015, 5, 13),
     tactility: Tactility.LoveToHug,
     features: [Features.FatBelly, Features.LongMoustache],
-    type: 'cat',
+    type: AnimalType.Cat,
     photo: './public/burger.jpg',
   },
   {
@@ -22,7 +22,7 @@ export const persons: Card[] = [
     birthday: new Date(2016, 2, 5),
     tactility: Tactility.HardToGet,
     features: [Features.BoomingVoice],
-    type: 'bird',
+    type: AnimalType.Bird,
     photo: './public/birdperson.jpg',
   },
   {
@@ -30,7 +30,7 @@ export const persons: Card[] = [
     birthday: new Date(2019, 12, 30),
     tactility: Tactility.HardToGet,
     features: [Features.LongMoustache],
-    type: 'rodent',
+    type: AnimalType.Rodent,
     photo: './public/cuddles.jpg',
   },
   {
@@ -38,7 +38,7 @@ export const persons: Card[] = [
     birthday: new Date(2020, 10, 3),
     tactility: Tactility.LoveToHug,
     features: [Features.BoomingVoice],
-    type: 'dog',
+    type: AnimalType.Dog,
     photo: './public/smart.jpg',
   },
   {
@@ -46,7 +46,7 @@ export const persons: Card[] = [
     birthday: new Date(2020, 8, 18),
     tactility: Tactility.LoveToHug,
     features: [Features.FatBelly, Features.FluffyCheeks, Features.LongMoustache],
-    type: 'cat',
+    type: AnimalType.Cat,
     photo: './public/gacek.jpeg',
   },
   {
@@ -54,7 +54,7 @@ export const persons: Card[] = [
     birthday: new Date(2017, 1, 28),
     tactility: Tactility.LoveToHug,
     features: [Features.FatBelly, Features.LongMoustache],
-    type: 'cat',
+    type: AnimalType.Cat,
     photo: './public/pancake.jpg',
   },
   {
@@ -62,7 +62,7 @@ export const persons: Card[] = [
     birthday: new Date(2020, 10, 10),
     tactility: Tactility.HardToGet,
     features: [Features.BoomingVoice],
-    type: 'bird',
+    type: AnimalType.Bird,
     photo: './public/mabel.jpg',
   },
   {
@@ -70,7 +70,7 @@ export const persons: Card[] = [
     birthday: new Date(2019, 3, 1),
     tactility: Tactility.HardToGet,
     features: [Features.FluffyCheeks, Features.FatBelly],
-    type: 'dog',
+    type: AnimalType.Dog,
     photo: './public/gary.jpg',
   },
 ];
