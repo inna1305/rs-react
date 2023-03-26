@@ -140,3 +140,10 @@ fieldset {
     background-color: #373fe0;
     transition: 0.2s ease;
 }
+
+.warn {
+    margin: 0 20px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
