@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { InputProps } from './NameInput';
+import { InputProps } from '../../../../../types';
 
 class DateInput extends Component<InputProps> {
   inputRef = React.createRef<HTMLInputElement>();
-
-  validateDate() {
-    //?
-  }
 
   render() {
     return (

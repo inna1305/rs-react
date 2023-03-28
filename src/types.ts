@@ -1,3 +1,4 @@
+import React from 'react';
 export interface Card {
   name: string;
   birthday: Date;
@@ -25,4 +26,18 @@ export enum AnimalType {
   'Dog' = 'Dog',
   'Bird' = 'Bird',
   'Rodent' = 'Rodent',
+  'Different' = 'Different',
+}
+
+export interface InputProps {
+  inputRef?: React.RefObject<HTMLInputElement>;
+  style?: React.CSSProperties;
+}
+
+export interface IState {
+  inputName: string | null;
+  dateInput: string | null;
+  nameWarning: boolean;
+  dateWarning: boolean;
+  isValidity: boolean;
 }

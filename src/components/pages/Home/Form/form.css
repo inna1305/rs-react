@@ -52,7 +52,7 @@
     font-size: 15px;
     background: none;
     border: 2px solid #9a9a9a;
-    color: #9a9a9a;
+    color: white;
     padding: 0 15px;
 }
 
@@ -70,7 +70,9 @@
 
 .select-elem {
     justify-content: start;
+    color: white;
 }
+
 
 fieldset {
     display: flex;
@@ -146,4 +148,12 @@ fieldset {
     font-size: 20px;
     font-weight: bold;
     color: red;
+}
+
+.warning {
+    position: relative;
+    font-size: 14px;
+    color: #ff6969;
+    margin: 0;
+    top: -10px;
 }

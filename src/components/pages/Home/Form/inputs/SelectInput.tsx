@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { InputProps } from './NameInput';
-import { Tactility } from '../../../../../types';
+import { InputProps, Tactility } from '../../../../../types';
 
 class SelectInput extends Component<InputProps> {
   inputRef = React.createRef<HTMLSelectElement>();
-
-  validateSelect() {
-    //?
-  }
 
   render() {
     return (

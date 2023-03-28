@@ -1,15 +1,12 @@
 import React, { Component, RefObject } from 'react';
 import { Features } from '../../../../../types';
-import { InputProps } from './NameInput';
+import { InputProps } from '../../../../../types';
 
 class CheckboxInput extends Component<InputProps> {
   ref1 = React.createRef<HTMLInputElement>();
   ref2 = React.createRef<HTMLInputElement>();
   ref3 = React.createRef<HTMLInputElement>();
   checkboxRefs: RefObject<HTMLInputElement>[] = [this.ref1, this.ref2, this.ref3];
-  validate() {
-    //?
-  }
 
   render() {
     return (

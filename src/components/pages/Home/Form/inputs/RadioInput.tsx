@@ -1,21 +1,19 @@
 import React, { Component, RefObject } from 'react';
-import { InputProps } from './NameInput';
+import { InputProps } from '../../../../../types';
 
 class RadioInput extends Component<InputProps> {
   dogRef = React.createRef<HTMLInputElement>();
   catRef = React.createRef<HTMLInputElement>();
   birdRef = React.createRef<HTMLInputElement>();
   rodentRef = React.createRef<HTMLInputElement>();
+  differentRef = React.createRef<HTMLInputElement>();
   radioRefs: RefObject<HTMLInputElement>[] = [
     this.dogRef,
     this.birdRef,
     this.catRef,
     this.rodentRef,
+    this.differentRef,
   ];
-
-  validate() {
-    //?
-  }
 
   render() {
     return (
@@ -33,6 +31,7 @@ class RadioInput extends Component<InputProps> {
                 value="dog"
                 className="radio-button__input"
                 ref={this.dogRef}
+                required
               />
             </div>
             <div className="radio-wrap">
@@ -45,6 +44,7 @@ class RadioInput extends Component<InputProps> {
                 value="cat"
                 className="radio-button__input"
                 ref={this.catRef}
+                required
               />
             </div>
             <div className="radio-wrap">
@@ -57,6 +57,7 @@ class RadioInput extends Component<InputProps> {
                 value="bird"
                 className="radio-button__input"
                 ref={this.birdRef}
+                required
               />
             </div>
             <div className="radio-wrap">
@@ -69,6 +70,21 @@ class RadioInput extends Component<InputProps> {
                 value="rodent"
                 className="radio-button__input"
                 ref={this.rodentRef}
+                required
+              />
+            </div>
+            <div className="radio-wrap">
+              <label htmlFor="different" className="radio-button__label">
+                Different
+              </label>
+              <input
+                type="radio"
+                name="type"
+                value="different"
+                className="radio-button__input"
+                ref={this.differentRef}
+                required
+                defaultChecked
               />
             </div>
           </div>

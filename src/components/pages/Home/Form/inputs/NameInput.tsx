@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-
-export interface InputProps {
-  inputRef?: React.RefObject<HTMLInputElement>;
-}
-class NameInput extends Component<InputProps> {
+import React from 'react';
+import { InputProps } from '../../../../../types';
+class NameInput extends React.Component<InputProps> {
   inputRef = React.createRef<HTMLInputElement>();
+  constructor(props: InputProps) {
+    super(props);
+  }
 
   render() {
     return (
