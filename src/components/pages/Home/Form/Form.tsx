@@ -10,6 +10,7 @@ import Header from '../../../Header/Header';
 import { AnimalType, Features, ICard, IState, Tactility } from '../../../../types';
 import { Card } from '../Cards/Card';
 class FormCreateCard extends Component<object, IState> {
+  formRef = React.createRef<HTMLFormElement>();
   nameInputRef = React.createRef<NameInput>();
   dateInputRef = React.createRef<DateInput>();
   selectInputRef = React.createRef<SelectInput>();
@@ -38,7 +39,7 @@ class FormCreateCard extends Component<object, IState> {
         <div className="warn">
           sorry, my work is still in progress. if it doesn&apos;t bother you, check the work later ♥
         </div>
-        <form className="home-create-form" onSubmit={this.handleSubmit}>
+        <form className="home-create-form" onSubmit={this.handleSubmit} ref={this.formRef}>
           <h3 className="home-create-form__title">Add your pet</h3>
           <NameInput ref={this.nameInputRef} />
           {this.renderWarning('&#62; 2 characters and no numbers', this.state.nameWarning)}
@@ -99,6 +100,7 @@ class FormCreateCard extends Component<object, IState> {
     Promise.all([promise, promise2]).then(() => {
       if (this.isValid()) {
         this.createCard();
+        this.formRef.current?.reset();
       }
     });
   };
