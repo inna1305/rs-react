@@ -9,7 +9,6 @@ import './form.css';
 import Header from '../../../Header/Header';
 import { AnimalType, Features, ICard, IState, Tactility } from '../../../../types';
 import { Card } from '../Cards/Card';
-
 class FormCreateCard extends Component<object, IState> {
   nameInputRef = React.createRef<NameInput>();
   dateInputRef = React.createRef<DateInput>();
@@ -26,7 +25,7 @@ class FormCreateCard extends Component<object, IState> {
       tactilityValue: null,
       typeValue: null,
       featuresValues: null,
-      photoValue: null,
+      photoValue: '../../../../../public/defaultAvatar.jpg',
       nameWarning: false,
       dateWarning: false,
     };

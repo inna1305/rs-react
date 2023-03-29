@@ -1,5 +1,6 @@
 import React from 'react';
 import { ICard } from '../../../../types';
+import './cards.css';
 
 export class Card extends React.Component<ICard> {
   constructor(props: ICard) {
@@ -9,17 +10,19 @@ export class Card extends React.Component<ICard> {
     const { name, birthday, tactility, photo, type } = this.props;
     return (
       <>
-        <div
-          className="card-photo"
-          style={{
-            backgroundImage: `url(${photo})`,
-          }}
-        ></div>
-        <div className="card-info card-name">{name}</div>
-        <div className="card-info">{birthday.toLocaleDateString()}</div>
-        <div className="card-info">{tactility}</div>
-        <div className="card-info">{this.GetFeatures()}</div>
-        <div className="card-info">{type}</div>
+        <div className="card-container">
+          <div
+            className="card-photo"
+            style={{
+              backgroundImage: `url(${photo})`,
+            }}
+          ></div>
+          <div className="card-info card-name">{name}</div>
+          <div className="card-info">{birthday.toLocaleDateString()}</div>
+          <div className="card-info">{tactility}</div>
+          <div className="card-info">{this.GetFeatures()}</div>
+          <div className="card-info">{type}</div>
+        </div>
       </>
     );
   }
