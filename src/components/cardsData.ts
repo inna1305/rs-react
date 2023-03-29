@@ -1,12 +1,12 @@
-import { AnimalType, Card, Features, Tactility } from '../types';
+import { AnimalType, ICard, Features, Tactility } from '../types';
 
-export const persons: Card[] = [
+export const persons: ICard[] = [
   {
     name: 'Pumpkin',
     birthday: new Date(2010, 7, 13),
     tactility: Tactility.LoveToHug,
     features: [Features.FatBelly],
-    type: AnimalType.Cat,
+    type: AnimalType.Rodent,
     photo: './public/pumpkin.jpg',
   },
   {

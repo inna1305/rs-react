@@ -1,5 +1,5 @@
 import React from 'react';
-export interface Card {
+export interface ICard {
   name: string;
   birthday: Date;
   tactility: Tactility;
@@ -34,12 +34,13 @@ export interface InputProps {
 }
 
 export interface IState {
-  inputName: string | null;
-  dateInput: string | null;
-  tactility: Tactility | null;
-  features: Features[] | null;
-  type: AnimalType | null;
-  photo: string | null;
+  cards: ICard[];
+  nameValue: string | null;
+  dateValue: Date | null;
+  tactilityValue: Tactility | null;
+  featuresValues: Features[] | null;
+  typeValue: AnimalType | null;
+  photoValue: string | null;
   nameWarning: boolean;
   dateWarning: boolean;
 }

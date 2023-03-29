@@ -7,7 +7,8 @@ import RadioInput from './inputs/RadioInput';
 import FileInput from './FileInput';
 import './form.css';
 import Header from '../../../Header/Header';
-import { AnimalType, IState } from '../../../../types';
+import { AnimalType, Features, ICard, IState, Tactility } from '../../../../types';
+import { Card } from '../Cards/Card';
 
 class FormCreateCard extends Component<object, IState> {
   nameInputRef = React.createRef<NameInput>();
@@ -19,12 +20,13 @@ class FormCreateCard extends Component<object, IState> {
   constructor(props: IState) {
     super(props);
     this.state = {
-      inputName: null,
-      dateInput: null,
-      tactility: null,
-      type: null,
-      features: null,
-      photo: null,
+      cards: [],
+      nameValue: null,
+      dateValue: null,
+      tactilityValue: null,
+      typeValue: null,
+      featuresValues: null,
+      photoValue: null,
       nameWarning: false,
       dateWarning: false,
     };
@@ -51,6 +53,9 @@ class FormCreateCard extends Component<object, IState> {
             Add
           </button>
         </form>
+        {this.state.cards.map((card, index) => (
+          <Card key={index} {...card} />
+        ))}
       </>
     );
   }
@@ -72,19 +77,23 @@ class FormCreateCard extends Component<object, IState> {
 
     const name = this.nameInputRef.current?.inputRef.current?.value;
     const date = this.dateInputRef.current?.inputRef.current?.value;
-    const tactility = this.selectInputRef.current?.inputRef.current?.value;
-    const features: string[] = [];
+    const tactility = this.selectInputRef.current?.inputRef.current?.value as Tactility;
+    if (!tactility) {
+      throw new Error('tactility value is not found');
+    }
+    const features: Features[] = [];
     this.checkboxInputRef.current?.checkboxRefs.map((ref) => {
       if (ref.current?.checked) {
-        features.push(ref.current.value);
+        features.push(ref.current.value as Features);
       }
     });
-    let animalType = `${AnimalType.Different}`;
+    let animalType = AnimalType.Different;
     this.radioInputRef.current?.radioRefs.map((ref) => {
       if (ref.current?.checked) {
-        animalType = ref.current?.value;
+        animalType = ref.current?.value as AnimalType;
       }
     });
+    this.setState({ tactilityValue: tactility, featuresValues: features, typeValue: animalType });
 
     const promise = this.validateName(name);
     const promise2 = this.validateDate(date);
@@ -97,34 +106,42 @@ class FormCreateCard extends Component<object, IState> {
 
   async validateName(name: string | undefined) {
     if (!name || name.length < 2) {
-      this.setState({ inputName: null, nameWarning: true });
+      this.setState({ nameValue: null, nameWarning: true });
       return;
     } else {
-      this.setState({ inputName: name, nameWarning: false });
+      this.setState({ nameValue: name, nameWarning: false });
     }
   }
 
   async validateDate(dateString: string | undefined) {
     if (!dateString) {
-      this.setState({ dateInput: null, dateWarning: true });
+      this.setState({ dateValue: null, dateWarning: true });
       return;
     }
     const date = new Date(dateString);
     const currentYear = new Date().getFullYear();
     if (isNaN(date.getTime())) {
-      this.setState({ dateInput: null, dateWarning: true });
+      this.setState({ dateValue: null, dateWarning: true });
       return;
     }
     if (date.getFullYear() < 1900 || date.getFullYear() > currentYear) {
-      this.setState({ dateInput: null, dateWarning: true });
+      this.setState({ dateValue: null, dateWarning: true });
       return;
     }
-    this.setState({ dateInput: dateString, dateWarning: false });
+    this.setState({ dateValue: date, dateWarning: false });
   }
 
-  createCard(): void {
-    console.log('create test');
-    console.log(this.state);
+  createCard() {
+    const name = this.state.nameValue!;
+    const birthday = this.state.dateValue!;
+    const tactility = this.state.tactilityValue!;
+    const features = this.state.featuresValues!;
+    const type = this.state.typeValue!;
+    const photo = this.state.photoValue!;
+    const newCard: ICard = { name, birthday, tactility, photo, type, features };
+    this.setState({
+      cards: [...this.state.cards, newCard],
+    });
   }
 
   isValid = () => {
