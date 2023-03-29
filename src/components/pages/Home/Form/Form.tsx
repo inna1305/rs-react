@@ -21,9 +21,12 @@ class FormCreateCard extends Component<object, IState> {
     this.state = {
       inputName: null,
       dateInput: null,
+      tactility: null,
+      type: null,
+      features: null,
+      photo: null,
       nameWarning: false,
       dateWarning: false,
-      isValidity: false,
     };
   }
 
@@ -71,33 +74,37 @@ class FormCreateCard extends Component<object, IState> {
     const date = this.dateInputRef.current?.inputRef.current?.value;
     const tactility = this.selectInputRef.current?.inputRef.current?.value;
     const features: string[] = [];
-
     this.checkboxInputRef.current?.checkboxRefs.map((ref) => {
       if (ref.current?.checked) {
         features.push(ref.current.value);
       }
     });
-
     let animalType = `${AnimalType.Different}`;
     this.radioInputRef.current?.radioRefs.map((ref) => {
       if (ref.current?.checked) {
         animalType = ref.current?.value;
       }
     });
-    this.validateName(name);
-    this.validateDate(date);
+
+    const promise = this.validateName(name);
+    const promise2 = this.validateDate(date);
+    Promise.all([promise, promise2]).then(() => {
+      if (this.isValid()) {
+        this.createCard();
+      }
+    });
   };
 
-  validateName(name: string | undefined) {
+  async validateName(name: string | undefined) {
     if (!name || name.length < 2) {
-      this.setState({ inputName: null, nameWarning: true }, this.updateIsValidity);
+      this.setState({ inputName: null, nameWarning: true });
       return;
     } else {
-      this.setState({ inputName: name, nameWarning: false }, this.updateIsValidity);
+      this.setState({ inputName: name, nameWarning: false });
     }
   }
 
-  validateDate(dateString: string | undefined): void {
+  async validateDate(dateString: string | undefined) {
     if (!dateString) {
       this.setState({ dateInput: null, dateWarning: true });
       return;
@@ -105,25 +112,23 @@ class FormCreateCard extends Component<object, IState> {
     const date = new Date(dateString);
     const currentYear = new Date().getFullYear();
     if (isNaN(date.getTime())) {
-      this.setState({ dateInput: null, dateWarning: true }, this.updateIsValidity);
+      this.setState({ dateInput: null, dateWarning: true });
       return;
     }
     if (date.getFullYear() < 1900 || date.getFullYear() > currentYear) {
-      this.setState({ dateInput: null, dateWarning: true }, this.updateIsValidity);
+      this.setState({ dateInput: null, dateWarning: true });
       return;
     }
-    this.setState({ dateInput: dateString, dateWarning: false }, this.updateIsValidity);
+    this.setState({ dateInput: dateString, dateWarning: false });
   }
 
-  createCard(date: string, tactility: string, features: string[], type: string): void {
+  createCard(): void {
     console.log('create test');
+    console.log(this.state);
   }
 
-  updateIsValidity = () => {
-    if (this.state.inputName && this.state.dateInput) {
-      this.setState({ isValidity: true });
-      this.createCard(this.state.dateInput, '', [''], '');
-    }
+  isValid = () => {
+    return !this.state.nameWarning && !this.state.dateWarning;
   };
 }
 

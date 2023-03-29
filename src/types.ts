@@ -4,7 +4,6 @@ export interface Card {
   birthday: Date;
   tactility: Tactility;
   features: Features[];
-  // dimensions: string;
   type: AnimalType;
   photo: string;
 }
@@ -37,7 +36,10 @@ export interface InputProps {
 export interface IState {
   inputName: string | null;
   dateInput: string | null;
+  tactility: Tactility | null;
+  features: Features[] | null;
+  type: AnimalType | null;
+  photo: string | null;
   nameWarning: boolean;
   dateWarning: boolean;
-  isValidity: boolean;
 }
