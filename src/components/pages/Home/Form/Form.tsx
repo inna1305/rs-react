@@ -4,7 +4,7 @@ import DateInput from './inputs/DateInput';
 import SelectInput from './inputs/SelectInput';
 import CheckboxInput from './inputs/CheckboxInput';
 import RadioInput from './inputs/RadioInput';
-import FileInput from './FileInput';
+import FileInput from './inputs/FileInput';
 import './form.css';
 import Header from '../../../Header/Header';
 import { AnimalType, Features, ICard, IState, Tactility } from '../../../../types';
@@ -16,6 +16,8 @@ class FormCreateCard extends Component<object, IState> {
   selectInputRef = React.createRef<SelectInput>();
   checkboxInputRef = React.createRef<CheckboxInput>();
   radioInputRef = React.createRef<RadioInput>();
+  fileInputRef = React.createRef<FileInput>();
+  refForwardImage = React.createRef<HTMLInputElement>();
 
   constructor(props: IState) {
     super(props);
@@ -29,6 +31,7 @@ class FormCreateCard extends Component<object, IState> {
       photoValue: '../../../../../public/defaultAvatar.jpg',
       nameWarning: false,
       dateWarning: false,
+      refForwardImage: this.refForwardImage,
     };
   }
 
@@ -48,7 +51,7 @@ class FormCreateCard extends Component<object, IState> {
           <SelectInput ref={this.selectInputRef} />
           <CheckboxInput ref={this.checkboxInputRef} />
           <RadioInput ref={this.radioInputRef} />
-          <FileInput />
+          <FileInput ref={this.fileInputRef} />
           <button type="submit" className="form-button">
             Add
           </button>
@@ -93,7 +96,16 @@ class FormCreateCard extends Component<object, IState> {
         animalType = ref.current?.value as AnimalType;
       }
     });
-    this.setState({ tactilityValue: tactility, featuresValues: features, typeValue: animalType });
+    const photo = (this.refForwardImage.current?.files as FileList)
+      ? URL.createObjectURL((this.refForwardImage.current?.files as FileList)[0])
+      : '../../../../../public/defaultAvatar.jpg';
+
+    this.setState({
+      tactilityValue: tactility,
+      featuresValues: features,
+      typeValue: animalType,
+      photoValue: photo,
+    });
 
     const promise = this.validateName(name);
     const promise2 = this.validateDate(date);

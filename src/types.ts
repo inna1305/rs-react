@@ -1,4 +1,5 @@
 import React from 'react';
+
 export interface ICard {
   name: string;
   birthday: Date;
@@ -33,6 +34,10 @@ export interface InputProps {
   style?: React.CSSProperties;
 }
 
+export interface FileInputProps {
+  refForwardImage?: React.RefObject<HTMLInputElement>;
+}
+
 export interface IState {
   cards: ICard[];
   nameValue: string | null;
@@ -43,4 +48,5 @@ export interface IState {
   photoValue: string | null;
   nameWarning: boolean;
   dateWarning: boolean;
+  refForwardImage: React.RefObject<HTMLInputElement>;
 }
