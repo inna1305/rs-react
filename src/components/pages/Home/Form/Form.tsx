@@ -42,7 +42,12 @@ class FormCreateCard extends Component<object, IState> {
         <div className="warn">
           sorry, my work is still in progress. if it doesn&apos;t bother you, check the work later ♥
         </div>
-        <form className="home-create-form" onSubmit={this.handleSubmit} ref={this.formRef}>
+        <form
+          className="home-create-form"
+          onSubmit={this.handleSubmit}
+          ref={this.formRef}
+          id="form"
+        >
           <h3 className="home-create-form__title">Add your pet</h3>
           <NameInput ref={this.nameInputRef} />
           {this.renderWarning('&#62; 2 characters and no numbers', this.state.nameWarning)}
