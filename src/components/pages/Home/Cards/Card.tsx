@@ -1,34 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ICard } from '../../../../types';
 import './cards.css';
 
-export class Card extends React.Component<ICard> {
-  constructor(props: ICard) {
-    super(props);
-  }
-  render() {
-    const { name, birthday, tactility, photo, type } = this.props;
-    return (
-      <>
-        <div className="card-container">
-          <div
-            className="card-photo"
-            style={{
-              backgroundImage: `url(${photo})`,
-            }}
-          ></div>
-          <div className="card-info card-name">{name}</div>
-          <div className="card-info">{birthday.toLocaleDateString()}</div>
-          <div className="card-info">{tactility}</div>
-          <div className="card-info">{this.GetFeatures()}</div>
-          <div className="card-info">{type}</div>
-        </div>
-      </>
-    );
-  }
+const CardContext = React.createContext<ICard | undefined>(undefined);
 
-  GetFeatures = () => {
-    const { features } = this.props;
+export const Card = (props: ICard) => {
+  const { name, birthday, tactility, photo, type, features } = useContext(CardContext) ?? props;
+
+  const GetFeatures = () => {
     const listItems = features.map((feature) => (
       <li key={feature} className="list-item">
         {feature}
@@ -40,4 +19,20 @@ export class Card extends React.Component<ICard> {
       </div>
     );
   };
-}
+
+  return (
+    <div className="card-container">
+      <div
+        className="card-photo"
+        style={{
+          backgroundImage: `url(${photo})`,
+        }}
+      ></div>
+      <div className="card-info card-name">{name}</div>
+      <div className="card-info">{birthday.toLocaleDateString()}</div>
+      <div className="card-info">{tactility}</div>
+      <div className="card-info">{GetFeatures()}</div>
+      <div className="card-info">{type}</div>
+    </div>
+  );
+};
