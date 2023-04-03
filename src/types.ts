@@ -1,11 +1,12 @@
 import React from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 export interface ICard {
   name: string;
-  birthday: Date;
-  tactility: Tactility;
+  birthday: Date | null;
+  tactility: Tactility | null;
   features: Features[];
-  type: AnimalType;
+  type: AnimalType | '';
   photo: string;
 }
 
@@ -29,11 +30,6 @@ export enum AnimalType {
   'Different' = 'Different',
 }
 
-export interface InputProps {
-  inputRef?: React.RefObject<HTMLInputElement>;
-  style?: React.CSSProperties;
-}
-
 export interface FileInputProps {
   refForwardImage?: React.RefObject<HTMLInputElement>;
 }
@@ -44,9 +40,22 @@ export interface IState {
   dateValue: Date | null;
   tactilityValue: Tactility | null;
   featuresValues: Features[] | null;
-  typeValue: AnimalType | null;
+  typeValue: AnimalType | '';
   photoValue: string | null;
   nameWarning: boolean;
   dateWarning: boolean;
   refForwardImage: React.RefObject<HTMLInputElement>;
+}
+
+export type Inputs = {
+  name: string;
+  date: Date;
+  tactility: Tactility;
+  animalType: AnimalType;
+  features: Features[];
+  photo: string;
+};
+
+export interface IInputProps {
+  register: UseFormRegister<FieldValues>;
 }

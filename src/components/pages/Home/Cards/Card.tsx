@@ -29,7 +29,7 @@ export const Card = (props: ICard) => {
         }}
       ></div>
       <div className="card-info card-name">{name}</div>
-      <div className="card-info">{birthday.toLocaleDateString()}</div>
+      <div className="card-info">{birthday?.toLocaleDateString()}</div>
       <div className="card-info">{tactility}</div>
       <div className="card-info">{GetFeatures()}</div>
       <div className="card-info">{type}</div>
