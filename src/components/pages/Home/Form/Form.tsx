@@ -13,9 +13,11 @@ const Form = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm<MyFormValues>();
 
   const onSubmit = (data: MyFormValues) => {
+    reset();
     console.log(data);
   };
 
@@ -48,14 +50,18 @@ const Form = () => {
             className="home-create-form__input input-date"
             id="name"
             type="date"
-            {...register('Birthday', { required: true })}
+            {...register('birthday', {
+              required: true,
+              // validate: (value): boolean => isDateValid(value),
+            })}
           />
+          {errors.birthday && <span className="error">invalid date</span>}
         </div>
         <div className="home-create-form__group select-elem">
           <div className="home-create-form__label">Tactility</div>
           <select
             className="home-create-form__select"
-            {...register('Tactility', { required: true })}
+            {...register('tactility', { required: true })}
           >
             <option className="home-create-form__option">{Tactility.LoveToHug}</option>
             <option className="home-create-form__option">{Tactility.HardToGet}</option>
@@ -71,7 +77,7 @@ const Form = () => {
               className="checkbox-input"
               type="checkbox"
               value={Features.FluffyCheeks}
-              {...register('Feature', { required: true })}
+              {...register('feature', { required: true })}
             />
           </div>
           <div className="checkbox-group">
@@ -81,7 +87,7 @@ const Form = () => {
             <input
               className="checkbox-input"
               type="checkbox"
-              {...register('Feature', { required: true })}
+              {...register('feature', { required: true })}
               value={Features.BoomingVoice}
             />
           </div>
@@ -92,10 +98,11 @@ const Form = () => {
             <input
               className="checkbox-input"
               type="checkbox"
-              {...register('Feature', { required: true })}
+              {...register('feature', { required: true })}
               value={Features.FatBelly}
             />
           </div>
+          {errors.feature && <span className="error">choose option</span>}
         </fieldset>
         <fieldset className="radio-group">
           <div className="home-create-form__label">Type</div>
@@ -108,7 +115,7 @@ const Form = () => {
                 type="radio"
                 value="dog"
                 className="radio-button__input"
-                {...register('Type', { required: true })}
+                {...register('type', { required: true })}
               />
             </div>
             <div className="radio-wrap">
@@ -119,7 +126,7 @@ const Form = () => {
                 type="radio"
                 value="cat"
                 className="radio-button__input"
-                {...register('Type', { required: true })}
+                {...register('type', { required: true })}
               />
             </div>
             <div className="radio-wrap">
@@ -130,7 +137,7 @@ const Form = () => {
                 type="radio"
                 className="radio-button__input"
                 value="bird"
-                {...register('Type', { required: true })}
+                {...register('type', { required: true })}
               />
             </div>
             <div className="radio-wrap">
@@ -141,7 +148,7 @@ const Form = () => {
                 type="radio"
                 className="radio-button__input"
                 value="rodent"
-                {...register('Type', { required: true })}
+                {...register('type', { required: true })}
               />
             </div>
             <div className="radio-wrap">
@@ -152,13 +159,13 @@ const Form = () => {
                 type="radio"
                 value="different"
                 className="radio-button__input"
-                {...register('Type', { required: true })}
+                {...register('type', { required: true })}
               />
             </div>
           </div>
+          {errors.type && <span className="error">choose type</span>}
         </fieldset>
         {/*<FileInput photo={formState.photoValue} onChange={handleInputChange} />*/}
-        {/*{renderWarning('&#62; 2 characters and no numbers', this.state.nameWarning)}*/}
         <button type="submit" className="form-button">
           Create
         </button>
