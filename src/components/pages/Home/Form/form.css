@@ -150,10 +150,7 @@ fieldset {
     color: red;
 }
 
-.warning {
-    position: relative;
+.error {
     font-size: 14px;
     color: #ff6969;
-    margin: 0;
-    top: -10px;
 }

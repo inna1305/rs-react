@@ -4,10 +4,18 @@ import Header from '../../../Header/Header';
 import { Features, Tactility } from '../../../../types';
 import { FieldValues, useForm } from 'react-hook-form';
 
-const Form = () => {
-  const { register, handleSubmit } = useForm<FieldValues>();
+interface MyFormValues extends FieldValues {
+  petName: string;
+}
 
-  const onSubmit = (data: FieldValues) => {
+const Form = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<MyFormValues>();
+
+  const onSubmit = (data: MyFormValues) => {
     console.log(data);
   };
 
@@ -28,8 +36,9 @@ const Form = () => {
             id="name"
             placeholder="name with a capital letter..."
             type="text"
-            {...register('Name')}
+            {...register('petName', { required: true })}
           />
+          {errors.petName && <span className="error">min 1 character</span>}
         </div>
         <div className="home-create-form__group date-group">
           <label className="home-create-form__label" htmlFor="name">
@@ -39,12 +48,15 @@ const Form = () => {
             className="home-create-form__input input-date"
             id="name"
             type="date"
-            {...register('Birthday')}
+            {...register('Birthday', { required: true })}
           />
         </div>
         <div className="home-create-form__group select-elem">
           <div className="home-create-form__label">Tactility</div>
-          <select className="home-create-form__select" {...register('Tactility')}>
+          <select
+            className="home-create-form__select"
+            {...register('Tactility', { required: true })}
+          >
             <option className="home-create-form__option">{Tactility.LoveToHug}</option>
             <option className="home-create-form__option">{Tactility.HardToGet}</option>
           </select>
@@ -59,7 +71,7 @@ const Form = () => {
               className="checkbox-input"
               type="checkbox"
               value={Features.FluffyCheeks}
-              {...register('Feature')}
+              {...register('Feature', { required: true })}
             />
           </div>
           <div className="checkbox-group">
@@ -69,7 +81,7 @@ const Form = () => {
             <input
               className="checkbox-input"
               type="checkbox"
-              {...register('Feature')}
+              {...register('Feature', { required: true })}
               value={Features.BoomingVoice}
             />
           </div>
@@ -80,7 +92,7 @@ const Form = () => {
             <input
               className="checkbox-input"
               type="checkbox"
-              {...register('Feature')}
+              {...register('Feature', { required: true })}
               value={Features.FatBelly}
             />
           </div>
@@ -96,7 +108,7 @@ const Form = () => {
                 type="radio"
                 value="dog"
                 className="radio-button__input"
-                {...register('Type')}
+                {...register('Type', { required: true })}
               />
             </div>
             <div className="radio-wrap">
@@ -107,7 +119,7 @@ const Form = () => {
                 type="radio"
                 value="cat"
                 className="radio-button__input"
-                {...register('Type')}
+                {...register('Type', { required: true })}
               />
             </div>
             <div className="radio-wrap">
@@ -118,7 +130,7 @@ const Form = () => {
                 type="radio"
                 className="radio-button__input"
                 value="bird"
-                {...register('Type')}
+                {...register('Type', { required: true })}
               />
             </div>
             <div className="radio-wrap">
@@ -129,7 +141,7 @@ const Form = () => {
                 type="radio"
                 className="radio-button__input"
                 value="rodent"
-                {...register('Type')}
+                {...register('Type', { required: true })}
               />
             </div>
             <div className="radio-wrap">
@@ -140,13 +152,16 @@ const Form = () => {
                 type="radio"
                 value="different"
                 className="radio-button__input"
-                {...register('Type')}
+                {...register('Type', { required: true })}
               />
             </div>
           </div>
         </fieldset>
         {/*<FileInput photo={formState.photoValue} onChange={handleInputChange} />*/}
         {/*{renderWarning('&#62; 2 characters and no numbers', this.state.nameWarning)}*/}
+        <button type="submit" className="form-button">
+          Create
+        </button>
       </form>
     </>
   );
