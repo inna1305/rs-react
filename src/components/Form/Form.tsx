@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { ReactElement, useState } from 'react';
 import './form.css';
-import Header from '../../../Header/Header';
-import { Features, Tactility } from '../../../../types';
+import Header from '../Header/Header';
+import { AnimalType, Features, Tactility } from '../../types';
 import { FieldValues, useForm } from 'react-hook-form';
+import { isDateValid } from './validate';
+import { IFeaturesProp } from '../Cards/Features';
 
 interface MyFormValues extends FieldValues {
   petName: string;
+  birthday: string;
+  tactility: Tactility;
+  type: AnimalType;
+  features: IFeaturesProp;
+  photo: string;
 }
 
 const Form = () => {
+  const [formData, setFormData] = useState<MyFormValues[]>([]);
   const {
     register,
     formState: { errors },
@@ -17,8 +25,11 @@ const Form = () => {
   } = useForm<MyFormValues>();
 
   const onSubmit = (data: MyFormValues) => {
+    setFormData([...formData, data]);
+    formData.map((data, index) => {
+      createCard(data, index);
+    });
     reset();
-    console.log(data);
   };
 
   return (
@@ -52,7 +63,7 @@ const Form = () => {
             type="date"
             {...register('birthday', {
               required: true,
-              // validate: (value): boolean => isDateValid(value),
+              validate: (value): boolean => isDateValid(value),
             })}
           />
           {errors.birthday && <span className="error">invalid date</span>}
@@ -170,101 +181,35 @@ const Form = () => {
           Create
         </button>
       </form>
+      {formData.map((data, index) => createCard(data, index))}
     </>
   );
 };
 
-//
-//   renderWarning(text: string, isVisible: boolean): ReactElement | null {
-//     if (isVisible) {
-//       return (
-//         <>
-//           <div className="warning">{text}</div>
-//         </>
-//       );
-//     } else {
-//       return null;
-//     }
-//   }
-//
+export const createCard = (data: MyFormValues, index: number): ReactElement => {
+  return (
+    <div className="card-container" key={index}>
+      <div
+        className="card-photo"
+        style={{
+          backgroundImage: `url(${data.photo})`,
+        }}
+      ></div>
+      <div className="card-info card-name">{data.petName}</div>
+      <div className="card-info">{data.birthday}</div>
+      <div className="card-info">{data.tactility}</div>
+      <div className="card-info">{/*<FeaturesComponent {...data.features} />*/}</div>
+      <div className="card-info">{data.type}</div>
+    </div>
+  );
+};
+
 //   handleSubmit = (event: FormEvent) => {
-//     event.preventDefault();
-//
-//     const name = this.nameInputRef.current?.inputRef.current?.value;
-//     const date = this.dateInputRef.current?.inputRef.current?.value;
-//     const tactility = this.selectInputRef.current?.inputRef.current?.value as Tactility;
-//     if (!tactility) {
-//       throw new Error('tactility value is not found');
-//     }
-//     const features: Features[] = [];
-//     this.checkboxInputRef.current?.checkboxRefs.map((ref) => {
-//       if (ref.current?.checked) {
-//         features.push(ref.current.value as Features);
-//       }
-//     });
-//     let animalType = AnimalType.Different;
-//     this.radioInputRef.current?.radioRefs.map((ref) => {
-//       if (ref.current?.checked) {
-//         animalType = ref.current?.value as AnimalType;
-//       }
-//     });
 //     const photo = (this.refForwardImage.current?.files as FileList)
 //       ? URL.createObjectURL((this.refForwardImage.current?.files as FileList)[0])
 //       : '../../../../../public/defaultAvatar.jpg';
 //
 //
-//     const promise = this.validateName(name);
-//     const promise2 = this.validateDate(date);
-//     Promise.all([promise, promise2]).then(() => {
-//       if (this.isValid()) {
-//         this.createCard();
-//         this.formRef.current?.reset();
-//       }
-//     });
-//   };
 //
-//   async validateName(name: string | undefined) {
-//     if (!name || name.length < 2) {
-//       this.setState({ nameValue: null, nameWarning: true });
-//       return;
-//     } else {
-//       this.setState({ nameValue: name, nameWarning: false });
-//     }
 //   }
-//
-//   async validateDate(dateString: string | undefined) {
-//     if (!dateString) {
-//       this.setState({ dateValue: null, dateWarning: true });
-//       return;
-//     }
-//     const date = new Date(dateString);
-//     const currentYear = new Date().getFullYear();
-//     if (isNaN(date.getTime())) {
-//       this.setState({ dateValue: null, dateWarning: true });
-//       return;
-//     }
-//     if (date.getFullYear() < 1900 || date.getFullYear() > currentYear) {
-//       this.setState({ dateValue: null, dateWarning: true });
-//       return;
-//     }
-//     this.setState({ dateValue: date, dateWarning: false });
-//   }
-//
-//   createCard() {
-//     const name = this.state.nameValue!;
-//     const birthday = this.state.dateValue!;
-//     const tactility = this.state.tactilityValue!;
-//     const features = this.state.featuresValues!;
-//     const type = this.state.typeValue!;
-//     const photo = this.state.photoValue!;
-//     const newCard: ICard = { name, birthday, tactility, photo, type, features };
-//     this.setState({
-//       cards: [...this.state.cards, newCard],
-//     });
-//   }
-//
-//   isValid = () => {
-//     return !this.state.nameWarning && !this.state.dateWarning;
-//   };
-// }
 export default Form;

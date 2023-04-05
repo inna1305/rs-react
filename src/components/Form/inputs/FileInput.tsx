@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FileInputProps } from '../../../../../types';
+import { FileInputProps } from '../../../types';
 
 class FileInput extends Component<FileInputProps> {
   fileInputRef: React.RefObject<HTMLInputElement>;

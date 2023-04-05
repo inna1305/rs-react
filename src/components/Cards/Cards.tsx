@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
-import { persons } from '../../../cardsData';
+import { persons } from '../cardsData';
 import './cards.css';
-import { ICard } from '../../../../types';
+import { ICard } from '../../types';
 import { Card } from './Card';
 
 const CardContext = createContext<ICard | null>(null);
