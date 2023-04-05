@@ -27,17 +27,18 @@ const Form = () => {
   const onSubmit = (data: MyFormValues) => {
     setFormData([...formData, data]);
     formData.map((data, index) => {
+      // createUrlImg(data.photo).then((res) => {
+      //   if (typeof res === 'object' && res instanceof FileList) {
+      //     data.photo = res;
+      //   }
       createCard(data, index);
+      reset();
     });
-    reset();
   };
 
   return (
     <>
       <Header />
-      <div className="warn">
-        sorry, my work is still in progress. if it doesn&apos;t bother you, check the work later ♥
-      </div>
       <form className="home-create-form" onSubmit={handleSubmit(onSubmit)} id="form">
         <h3 className="home-create-form__title">Add your pet</h3>
         <div className="home-create-form__group">
@@ -176,7 +177,10 @@ const Form = () => {
           </div>
           {errors.type && <span className="error">choose type</span>}
         </fieldset>
-        {/*<FileInput photo={formState.photoValue} onChange={handleInputChange} />*/}
+        <div className="photo-input">
+          <div className="home-create-form__label">photo</div>
+          <input type="file" id="photo" {...register('photo')} />
+        </div>
         <button type="submit" className="form-button">
           Create
         </button>
@@ -192,7 +196,8 @@ export const createCard = (data: MyFormValues, index: number): ReactElement => {
       <div
         className="card-photo"
         style={{
-          backgroundImage: `url(${data.photo})`,
+          backgroundImage: `url(
+            '../../../../../public/defaultAvatar.jpg')`,
         }}
       ></div>
       <div className="card-info card-name">{data.petName}</div>
@@ -204,12 +209,4 @@ export const createCard = (data: MyFormValues, index: number): ReactElement => {
   );
 };
 
-//   handleSubmit = (event: FormEvent) => {
-//     const photo = (this.refForwardImage.current?.files as FileList)
-//       ? URL.createObjectURL((this.refForwardImage.current?.files as FileList)[0])
-//       : '../../../../../public/defaultAvatar.jpg';
-//
-//
-//
-//   }
 export default Form;
