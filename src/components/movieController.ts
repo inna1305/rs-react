@@ -16,7 +16,8 @@ const findById = (id: number) => {
 
 export const searchByTitle = (title: string) => {
   fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=1e16d31f74bf1a1c5d381e59416e1ef6&query=${title}`)
+    `https://api.themoviedb.org/3/search/movie?api_key=1e16d31f74bf1a1c5d381e59416e1ef6&query=${title}`
+  )
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.log('error', error));
