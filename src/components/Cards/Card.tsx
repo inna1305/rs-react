@@ -1,28 +1,22 @@
 import React, { useContext } from 'react';
-import { ICard } from '../../types';
+import { ICard, IMovie } from '../../types';
 import './cards.css';
 import FeaturesComponent from './Features';
+import { MovieContext } from '../pages/Home/Home';
 
-const CardContext = React.createContext<ICard | undefined>(undefined);
-
-export const Card = (props: ICard) => {
-  const { name, birthday, tactility, photo, type, features } = useContext(CardContext) ?? props;
+export const Card = (props: IMovie) => {
+  const { title, id, posterPath, release_date } = props;
 
   return (
-    <div className="card-container">
+    <div className="card-container" id={String(id)}>
       <div
         className="card-photo"
         style={{
-          backgroundImage: `url(${photo})`,
+          backgroundImage: `url(${posterPath})`,
         }}
       ></div>
-      <div className="card-info card-name">{name}</div>
-      <div className="card-info">{birthday?.toLocaleDateString()}</div>
-      <div className="card-info">{tactility}</div>
-      <div className="card-info">
-        <FeaturesComponent features={features} />
-      </div>
-      <div className="card-info">{type}</div>
+      <div className="card-info card-name">{title}</div>
+      <div className="card-info">{release_date}</div>
     </div>
   );
 };

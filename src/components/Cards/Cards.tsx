@@ -1,21 +1,20 @@
-import React, { createContext } from 'react';
-import { persons } from '../cardsData';
-import './cards.css';
-import { ICard } from '../../types';
+import React, { useState } from 'react';
 import { Card } from './Card';
+import { IMovie } from '../../types';
+import { ICardsProps } from '../pages/Home/Home';
 
-const CardContext = createContext<ICard | null>(null);
+const Cards = (props: ICardsProps) => {
+  const [setMovies] = useState<IMovie[]>([]);
+  //const { movies } = useContext(MovieContext);
+  const movies = props.movies;
 
-const Cards = () => {
-  const items = persons.map((person, index) => (
-    <div key={index} className="card-container">
-      <CardContext.Provider value={person}>
-        <Card {...person} />
-      </CardContext.Provider>
+  return (
+    <div>
+      {movies.map((movie) => (
+        <Card key={movie.id} {...movie} />
+      ))}
     </div>
-  ));
-
-  return <div className="cards">{items}</div>;
+  );
 };
 
 export default Cards;
