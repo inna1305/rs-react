@@ -1,52 +1,46 @@
-import React, { ChangeEvent, FormEvent, ReactElement } from 'react';
+import React, { ChangeEvent, FormEvent, ReactElement, useState } from 'react';
 import Header from '../../Header/Header';
 import './home.css';
 import Cards from '../../Cards/Cards';
+import { getValueFromLS } from '../../../helpers/localStorage';
+import { searchByTitle } from '../../movieController';
+
+interface ISearchProp {
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
+}
 export const Home = (): ReactElement => {
+  const [searchQuery, setSearchQuery] = useState(getValueFromLS('search'));
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    setSearchQuery('');
+    searchByTitle(searchQuery);
+  };
   return (
     <div>
       <Header />
-      <SearchBar />
+      <SearchBar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        handleSubmit={handleSubmit}
+      />
       <Cards />
     </div>
   );
 };
 
-class SearchBar extends React.Component {
-  state = {
-    value: localStorage.getItem('searchWord') || '',
-  };
-
-  render() {
-    return (
-      <form className="home-searchbar" onSubmit={this.handleSubmit}>
-        <input
-          placeholder="enter something..."
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Search</button>
-      </form>
-    );
-  }
-  componentWillUnmount() {
-    if (!localStorage.getItem('searchWord')) {
-      localStorage.setItem('searchWord', this.state.value);
-    }
-    if (this.state.value.length > 0) {
-      localStorage.setItem('searchWord', this.state.value);
-      this.setState({ state: '' });
-    }
-  }
-
-  handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    this.setState({ state: this.state.value });
-  };
-
-  handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ value: event.target.value });
-    this.setState({ state: this.state.value });
-  };
-}
+const SearchBar = (props: ISearchProp & { handleSubmit: (event: FormEvent) => void }) => {
+  const { searchQuery, setSearchQuery, handleSubmit } = props;
+  return (
+    <form className="home-searchbar" onSubmit={handleSubmit}>
+      <input
+        value={searchQuery}
+        placeholder="enter something..."
+        type="text"
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setSearchQuery(event.target.value)}
+      />
+      <button type="submit">Search</button>
+    </form>
+  );
+};
