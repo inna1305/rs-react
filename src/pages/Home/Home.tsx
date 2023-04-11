@@ -1,4 +1,4 @@
-import React, { FormEvent, ReactElement, useState } from 'react';
+import React, { FormEvent, ReactElement, useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import './home.css';
 import Cards from '../../components/Cards/Cards';
@@ -21,6 +21,16 @@ const Home = (): ReactElement => {
     await searchMovies(searchQuery);
     setSearchQuery('');
   };
+
+  useEffect(() => {
+    const search = getValueFromLS('search');
+    if (search) {
+      setSearchQuery(search);
+      setMovies([]);
+      searchMovies(search);
+      setSearchQuery('');
+    }
+  }, []);
 
   const searchMovies = async (query: string) => {
     const response = await fetch(
