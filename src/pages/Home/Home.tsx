@@ -36,7 +36,7 @@ const Home: React.FC<HomeProps> = (props): ReactElement => {
     <div>
       <Header />
       <div className="warn">
-        sorry, the tests are still in progress. if it doesn`t bother you, check the work later ♥
+        sorry, my work is still in progress. if it doesn`t bother you, check the work later ♥
       </div>
       <SearchBar
         searchQuery={searchQuery}
