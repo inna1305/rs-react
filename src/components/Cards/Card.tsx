@@ -4,9 +4,10 @@ import './cards.css';
 import { ConfigContext } from '../App';
 
 const Card = (props: IMovie) => {
-  const { title, id, poster_path, release_date, backdrop_path } = props;
+  const { title, id, poster_path, backdrop_path } = props;
   const config = useContext(ConfigContext);
   const [image, setImage] = useState<string | null>(null);
+  const alternativeImg = '../../../public/alternativePoster.png';
 
   useEffect(() => {
     async function fetchImage() {
@@ -20,20 +21,16 @@ const Card = (props: IMovie) => {
     fetchImage();
   }, [config, backdrop_path, poster_path]);
 
-  if (!config || !image) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div className="card-container" id={String(id)}>
       <div
         className="card-photo"
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${image || alternativeImg})`,
         }}
       ></div>
       <div className="card-info card-name">{title}</div>
-      <div className="card-info">{release_date}</div>
+      <div className="card-info">{}</div>
     </div>
   );
 };

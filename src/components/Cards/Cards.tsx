@@ -6,7 +6,7 @@ const Cards = (props: ICardsProps) => {
   const movies = props.movies;
 
   return (
-    <div>
+    <div className="cards-container">
       {movies.map((movie) => (
         <Card key={movie.id} {...movie} />
       ))}
