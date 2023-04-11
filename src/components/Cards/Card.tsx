@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { IMovie } from '../../types';
 import './cards.css';
 import { ConfigContext } from '../App';
+import Backdrop from '../Backdrop';
 
 const alternativeImg = '../../../public/alternativePoster.png';
 
@@ -25,10 +26,12 @@ const Card = (props: IMovie) => {
 
   const handleOpenCard = () => {
     setShowModal(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
+    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -43,6 +46,7 @@ const Card = (props: IMovie) => {
       {showModal && (
         <CardModal
           image={image}
+          release_date={props.release_date}
           overview={props.overview}
           onClose={handleCloseModal}
           title={props.title}
@@ -56,6 +60,7 @@ export default Card;
 interface IMovieModal {
   title: string;
   overview: string;
+  release_date: string;
   image?: string | null;
   onClose: () => void;
 }
@@ -63,6 +68,7 @@ interface IMovieModal {
 const CardModal = (props: IMovieModal) => {
   return (
     <>
+      <Backdrop show={true} onClick={props.onClose} />
       <div className="card-container-modal">
         <div
           className="card-photo-modal"
@@ -71,7 +77,8 @@ const CardModal = (props: IMovieModal) => {
           }}
         ></div>
         <div className="card-info card-name">{props.title}</div>
-        <div className="card-info-modal">{props.overview}</div>
+        <div className="card-info card-name">Release: {props.release_date}</div>
+        <div className="card-info-modal">Overview: {props.overview}</div>
       </div>
     </>
   );

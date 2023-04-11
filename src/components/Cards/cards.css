@@ -34,8 +34,11 @@
     align-items: start;
     padding: 10px;
     box-sizing: border-box;
-    position: absolute;
-    top: 30px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
 }
 
 .card-photo-modal {
