@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-import { Card } from './Card';
-import { IMovie } from '../../types';
-import { ICardsProps } from '../pages/Home/Home';
+import React from 'react';
+import Card from './Card';
+import { ICardsProps } from '../../types';
 
 const Cards = (props: ICardsProps) => {
-  const [setMovies] = useState<IMovie[]>([]);
-  //const { movies } = useContext(MovieContext);
   const movies = props.movies;
 
   return (

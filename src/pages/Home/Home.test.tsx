@@ -2,7 +2,7 @@ import { test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
-import App from '../../App';
+import App from '../../components/App';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 test('Should show title', async () => {

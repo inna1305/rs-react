@@ -1,6 +1,3 @@
-import React from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
-
 export interface ICard {
   name: string;
   birthday: Date | null;
@@ -30,38 +27,8 @@ export enum AnimalType {
   'Different' = 'Different',
 }
 
-export interface FileInputProps {
-  refForwardImage?: React.RefObject<HTMLInputElement>;
-}
-
-export interface IState {
-  cards: ICard[];
-  nameValue: string | null;
-  dateValue: Date | null;
-  tactilityValue: Tactility | null;
-  featuresValues: Features[] | null;
-  typeValue: AnimalType | '';
-  photoValue: string | null;
-  nameWarning: boolean;
-  dateWarning: boolean;
-  refForwardImage: React.RefObject<HTMLInputElement>;
-}
-
-export type Inputs = {
-  name: string;
-  date: Date;
-  tactility: Tactility;
-  animalType: AnimalType;
-  features: Features[];
-  photo: string;
-};
-
-export interface IInputProps {
-  register: UseFormRegister<FieldValues>;
-}
-
 export interface IMovie {
-  posterPath: string;
+  poster_path: string;
   adult: boolean;
   overview: string;
   release_date: string;
@@ -75,4 +42,23 @@ export interface IMovie {
   vote_count: number;
   video: boolean;
   vote_average: string;
+}
+
+export interface ICardsProps {
+  movies: IMovie[];
+}
+
+export interface IConfigResponse {
+  images: IImageOptions;
+  change_keys: string[];
+}
+
+interface IImageOptions {
+  base_url: string;
+  secure_base_url: string;
+  background_sizes: string[];
+  logo_sizes: string[];
+  poster_sizes: string[];
+  profile_sizes: string[];
+  still_sizes: string[];
 }

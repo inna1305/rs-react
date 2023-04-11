@@ -3,17 +3,10 @@ import Header from '../../components/Header/Header';
 import './home.css';
 import Cards from '../../components/Cards/Cards';
 import { getValueFromLS } from '../../helpers/localStorage';
-import { IConfigResponse, IMovie } from '../../types';
+import { IMovie } from '../../types';
 import SearchBar from '../../components/SearchBar';
 
-interface HomeProps {
-  config: IConfigResponse;
-}
-export interface ICardsProps {
-  movies: IMovie[];
-}
-
-const Home: React.FC<HomeProps> = (props): ReactElement => {
+const Home = (): ReactElement => {
   const [searchQuery, setSearchQuery] = useState(getValueFromLS('search'));
   const [movies, setMovies] = useState<IMovie[]>([]);
 
@@ -21,7 +14,6 @@ const Home: React.FC<HomeProps> = (props): ReactElement => {
     event.preventDefault();
     setMovies([]);
     await searchMovies(searchQuery);
-    console.log(movies);
   };
 
   const searchMovies = async (query: string) => {
