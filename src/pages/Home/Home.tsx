@@ -6,14 +6,20 @@ import { getValueFromLS } from '../../helpers/localStorage';
 import { IMovie } from '../../types';
 import SearchBar from '../../components/SearchBar';
 
+export interface ICardsProps {
+  movies: IMovie[];
+}
+
 const Home = (): ReactElement => {
   const [searchQuery, setSearchQuery] = useState(getValueFromLS('search'));
   const [movies, setMovies] = useState<IMovie[]>([]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    localStorage.setItem('search', searchQuery);
     setMovies([]);
     await searchMovies(searchQuery);
+    setSearchQuery('');
   };
 
   const searchMovies = async (query: string) => {
