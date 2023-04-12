@@ -26,7 +26,7 @@ const Card = (props: IMovie) => {
 
   const toggleModal = () => {
     setShowModal(!showModal);
-    setIsScrollBlocked(false);
+    //setIsScrollBlocked(false);
   };
 
   return (
