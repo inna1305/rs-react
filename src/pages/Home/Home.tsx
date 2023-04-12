@@ -43,9 +43,6 @@ const Home = (): ReactElement => {
   return (
     <div>
       <Header />
-      <div className="warn">
-        sorry, my work is still in progress. if it doesn`t bother you, check the work later ♥
-      </div>
       <SearchBar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}

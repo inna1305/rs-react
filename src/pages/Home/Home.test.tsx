@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
 import App from '../../components/App';
@@ -11,5 +11,8 @@ test('Should show title', async () => {
       <App />
     </Router>
   );
-  expect(screen.getByText('Home')).toBeInTheDocument();
+
+  await waitFor(() => {
+    expect(screen.getByText('Home Page')).toBeInTheDocument();
+  });
 });
