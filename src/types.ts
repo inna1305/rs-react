@@ -68,7 +68,7 @@ export interface IMovieModal {
   overview: string;
   release_date: string;
   image?: string | null;
-  onClick: () => void;
+  onClose: () => void;
 }
 
 export interface ICardsProps {

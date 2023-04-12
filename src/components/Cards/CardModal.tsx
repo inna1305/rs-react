@@ -6,7 +6,7 @@ import { alternativeImg } from './Card';
 const CardModal = (props: IMovieModal) => {
   return (
     <>
-      <Backdrop show={true} onClick={props.onClick} />
+      <Backdrop show={true} onClick={props.onClose} />
       <div className="card-container-modal">
         <div
           className="card-photo-modal"

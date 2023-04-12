@@ -24,18 +24,13 @@ const Card = (props: IMovie) => {
     fetchImage();
   }, [config, backdrop_path, poster_path]);
 
-  const handleOpenCard = () => {
-    setShowModal(true);
-    //setIsScrollBlocked(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    //setIsScrollBlocked(false);
+  const toggleModal = () => {
+    setShowModal(!showModal);
+    setIsScrollBlocked(false);
   };
 
   return (
-    <div className="card-container" id={String(id)} onClick={handleOpenCard}>
+    <div className="card-container" id={String(id)} onClick={toggleModal}>
       <div
         className="card-photo"
         style={{
@@ -43,15 +38,15 @@ const Card = (props: IMovie) => {
         }}
       ></div>
       <div className="card-info card-name">{title}</div>
-      {showModal && (
+      {showModal ? (
         <CardModal
           image={image}
           release_date={props.release_date}
           overview={props.overview}
-          onClick={handleCloseModal}
+          onClose={toggleModal}
           title={props.title}
         />
-      )}
+      ) : null}
     </div>
   );
 };
