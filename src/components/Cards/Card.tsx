@@ -26,12 +26,12 @@ const Card = (props: IMovie) => {
 
   const handleOpenCard = () => {
     setShowModal(true);
-    setIsScrollBlocked(true);
+    //setIsScrollBlocked(true);
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setIsScrollBlocked(false);
+    //setIsScrollBlocked(false);
   };
 
   return (
