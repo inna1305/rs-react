@@ -1,0 +1,19 @@
+.home-searchbar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-word {
+    margin-left: 10px;
+    font-size: 19px;
+    font-weight: bolder;
+}
+.label {
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: left;
+    color: #bce3ff;
+    font-size: 23px;
+    margin-bottom: 8px;
+}
