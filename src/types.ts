@@ -62,3 +62,20 @@ interface IImageOptions {
   profile_sizes: string[];
   still_sizes: string[];
 }
+
+export interface IMovieModal {
+  title: string;
+  overview: string;
+  release_date: string;
+  image?: string | null;
+  onClick: () => void;
+}
+
+export interface ICardsProps {
+  movies: IMovie[];
+}
+
+export interface ModalContextValue {
+  showModal: boolean;
+  setShowModal: (show: boolean) => void;
+}

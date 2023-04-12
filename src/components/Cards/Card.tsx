@@ -2,15 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { IMovie } from '../../types';
 import './cards.css';
 import { ConfigContext } from '../App';
-import Backdrop from '../Backdrop';
-
-const alternativeImg = '../../../public/alternativePoster.png';
+import CardModal from './CardModal';
+export const alternativeImg = '../../../public/alternativePoster.png';
 
 const Card = (props: IMovie) => {
   const { title, id, poster_path, backdrop_path } = props;
   const config = useContext(ConfigContext);
   const [image, setImage] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
+  //const [isScrollBlocked, setIsScrollBlocked] = useState(false);
 
   useEffect(() => {
     async function fetchImage() {
@@ -26,12 +26,12 @@ const Card = (props: IMovie) => {
 
   const handleOpenCard = () => {
     setShowModal(true);
-    document.body.style.overflow = 'hidden';
+    setIsScrollBlocked(true);
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    document.body.style.overflow = 'auto';
+    setIsScrollBlocked(false);
   };
 
   return (
@@ -48,7 +48,7 @@ const Card = (props: IMovie) => {
           image={image}
           release_date={props.release_date}
           overview={props.overview}
-          onClose={handleCloseModal}
+          onClick={handleCloseModal}
           title={props.title}
         />
       )}
@@ -56,30 +56,3 @@ const Card = (props: IMovie) => {
   );
 };
 export default Card;
-
-interface IMovieModal {
-  title: string;
-  overview: string;
-  release_date: string;
-  image?: string | null;
-  onClose: () => void;
-}
-
-const CardModal = (props: IMovieModal) => {
-  return (
-    <>
-      <Backdrop show={true} onClick={props.onClose} />
-      <div className="card-container-modal">
-        <div
-          className="card-photo-modal"
-          style={{
-            backgroundImage: `url(${props.image || alternativeImg})`,
-          }}
-        ></div>
-        <div className="card-info card-name">{props.title}</div>
-        <div className="card-info card-name">Release: {props.release_date}</div>
-        <div className="card-info-modal">Overview: {props.overview}</div>
-      </div>
-    </>
-  );
-};
